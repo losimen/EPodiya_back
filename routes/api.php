@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\VolunteerController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/events', [EventController::class, 'index']);
