@@ -21,6 +21,10 @@ return [
         'scheme' => 'https',
     ],
 
+    'telegram-bot-api' => [
+        'token' => env('TELEGRAM_BOT_TOKEN', '6207708083:AAH6zgZmHAg77MUY_vks34VBupm8wqMBQZY')
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

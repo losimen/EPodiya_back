@@ -26,6 +26,8 @@ class EventFactory extends Factory
             'short_description' => $this->faker->text(50),
             'description' => $this->faker->text(500),
             'credo' => $this->faker->text(20),
+            'city' => $this->faker->randomElement(['Lviv', 'Kyiv', 'Ternopil']),
+            'time' => $this->faker->dateTime,
             'photo_url' => $this->faker->url,
             'creator_id' => $this->faker->randomElement(Volunteer::all()->pluck('id')->toArray())
         ];
