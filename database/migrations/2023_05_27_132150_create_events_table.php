@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('credo');
             $table->text('description');
             $table->text('photo_url');
+            $table->unsignedBigInteger('creator_id');
+            $table->foreign('creator_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

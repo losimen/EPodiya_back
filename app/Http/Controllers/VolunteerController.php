@@ -7,15 +7,11 @@ use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
 {
-    public function index()
-    {
-        return Volunteer::with('user')->get();
-    }
-
     public function show(Volunteer $volunteer)
     {
         $volunteerEvents = [
-            'events' => $volunteer->events,
+            'participated_events' => $volunteer->participatedEvents,
+            'created_events' => $volunteer->createdEvents,
             'user' => $volunteer->user
         ];
 

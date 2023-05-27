@@ -18,10 +18,9 @@ class EventVolunteerFactory extends Factory
      */
     public function definition(): array
     {
-//        dd(Volunteer::all()->pluck('id')->toArray());
         return [
             'event_id' => $this->faker->randomElement(Event::all()->pluck('id')->toArray()),
-            'volunteer_id' => $this->faker->randomElement(Volunteer::all()->pluck('id')->toArray()),
+            'volunteer_id' => $this->faker->randomElement(Volunteer::all()->pluck('id')->toArray())
         ];
     }
 }

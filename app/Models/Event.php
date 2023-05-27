@@ -13,6 +13,10 @@ class Event extends Model
     public function volunteers()
     {
         return $this->belongsToMany(User::class, 'event_volunteers', 'event_id', 'volunteer_id');
+    }
 
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
     }
 }

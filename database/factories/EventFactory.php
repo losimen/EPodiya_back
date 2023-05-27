@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Volunteer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,6 +27,7 @@ class EventFactory extends Factory
             'description' => $this->faker->text(500),
             'credo' => $this->faker->text(20),
             'photo_url' => $this->faker->url,
+            'creator_id' => $this->faker->randomElement(Volunteer::all()->pluck('id')->toArray())
         ];
     }
 }

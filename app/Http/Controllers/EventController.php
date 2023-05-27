@@ -14,6 +14,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event->volunteers;
+        $event->creator;
         return $event;
     }
 }
