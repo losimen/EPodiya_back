@@ -8,6 +8,10 @@ Route::get('/events', [EventController::class, 'index']);
 
 Route::get('/events/{event}', [EventController::class, 'show']);
 
+Route::get('/events/approve/{event}', [EventController::class, 'approve']);
+
+Route::get('/events/refuse/{event}', [EventController::class, 'refuse']);
+
 Route::get('/volunteers', [VolunteerController::class, 'index']);
 
 Route::get('/volunteers/{volunteer}', [VolunteerController::class, 'show']);

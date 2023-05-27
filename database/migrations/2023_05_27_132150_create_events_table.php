@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('photo_url');
             $table->dateTime('time');
             $table->string('city');
+            $table->boolean('is_approved')->default(false);
             $table->unsignedBigInteger('creator_id');
             $table->foreign('creator_id')
                 ->references('id')
