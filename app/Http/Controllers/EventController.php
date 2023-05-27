@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventVolunteer;
+use App\Models\MessageEvent;
 use App\Models\Volunteer;
 use App\Notifications\SendNotification;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class EventController extends Controller
                 ])
             ]);
 
-        $telegram->sendMessage([
+        $tgResponse = $telegram->sendMessage([
             'chat_id' => $chatId,
             'text' => '🚨 Зʼявилась <b>нова</b> подія!' . "\n" . "\n" .
                 '✒️ <b>Імʼя:</b>' . $eventData['name'] . "\n" . "\n" .
@@ -61,20 +62,41 @@ class EventController extends Controller
             'reply_markup' => $keyboard,
             'parse_mode' => 'HTML'
         ]);
+
+        MessageEvent::create([
+            'message_id' => $tgResponse['message_id'],
+            'event_id' => $eventData['id'],
+        ]);
     }
 
     public function approve(Event $event)
     {
+        $telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
+        $chatId = env('TELEGRAM_CHAT_ID');
+
         $event->is_approved = true;
         $event->save();
+
+        $telegram->deleteMessage([
+            'chat_id' => $chatId,
+            'message_id' => MessageEvent::where('event_id', $event->id)->first()->message_id,
+        ]);
 
         return "Approved";
     }
 
     public function refuse(Event $event)
     {
+        $telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
+        $chatId = env('TELEGRAM_CHAT_ID');
+
         $event->is_approved = false;
         $event->save();
+
+        $telegram->deleteMessage([
+            'chat_id' => $chatId,
+            'message_id' => MessageEvent::where('event_id', $event->id)->first()->message_id,
+        ]);
 
         return "Refused";
     }
