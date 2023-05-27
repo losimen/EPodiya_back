@@ -11,3 +11,5 @@ Route::get('/events/{event}', [EventController::class, 'show']);
 Route::get('/volunteers', [VolunteerController::class, 'index']);
 
 Route::get('/volunteers/{volunteer}', [VolunteerController::class, 'show']);
+
+Route::post('/events', [EventController::class, 'store']);
