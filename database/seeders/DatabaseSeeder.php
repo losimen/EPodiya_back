@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\EventVolunteer;
 use App\Models\User;
@@ -19,6 +20,46 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        City::create([
+            'name' => 'Lviv'
+        ]);
+
+        City::create([
+            'name' => 'Kyiv'
+        ]);
+
+        City::create([
+            'name' => 'Kharkiv'
+        ]);
+
+        Category::create([
+            'name' => 'Концерт'
+        ]);
+
+        Category::create([
+            'name' => 'Ярмарок'
+        ]);
+        // концерт, ярмарок, стендап, виставка, семінар, кінопоказ, змагання
+        Category::create([
+            'name' => 'Стендап'
+        ]);
+
+        Category::create([
+            'name' => 'Виставка'
+        ]);
+
+        Category::create([
+            'name' => 'Семінар'
+        ]);
+
+        Category::create([
+            'name' => 'Кінопоказ'
+        ]);
+
+        Category::create([
+            'name' => 'Змагання'
+        ]);
+
         User::factory()
             ->count(100)
             ->create();
