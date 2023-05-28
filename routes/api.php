@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\VolunteerController;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +19,7 @@ Route::get('/volunteers', [VolunteerController::class, 'index']);
 Route::get('/volunteers/{volunteer}', [VolunteerController::class, 'show']);
 
 Route::post('/events', [EventController::class, 'store']);
+
+Route::get('/cities', [CitiesController::class, 'index']);
+
+Route::get('/categories', [CategoriesController::class, 'index']);
